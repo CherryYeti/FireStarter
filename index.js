@@ -119,6 +119,5 @@ const helpEmbed = new discord.MessageEmbed()
         { name: "/stop (server number)", value: "Stops server with corresponding value" },
         { name: "/cmd (server number) (command)", value: "Execute command with corresponding server (NO SLASHES)" },
         { name: "/who (server number)", value: "Lists who is on the corresponding server" }
-    )
-    .setFooter("Made by CherryYeti", "https://i.ibb.co/TKLgBhh/unnamed.jpg");
+    ).setFooter("Made by CherryYeti", "https://i.ibb.co/TKLgBhh/unnamed.jpg");
 client.login(token);
