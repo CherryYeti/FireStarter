@@ -3,8 +3,8 @@ const discord = require('discord.js');
 const child_process = require('child_process');
 const {token} = require('./config.json');
 
-var processes = new Array(servers_data.servers.length)
-var running = new Array(servers_data.servers.length).fill(false)
+var processes = new Array(servers_data.servers.length);
+var running = new Array(servers_data.servers.length).fill(false);
 const servers_data = JSON.parse(fs.readFileSync('SERVERS.json'));
 const client = new discord.Client({ intents: [discord.Intents.FLAGS.GUILDS] });
 client.once('ready', () => { console.log('Ready to work!'); });
@@ -16,66 +16,66 @@ client.on('interactionCreate', async interaction => {
     } else if (commandName === 'servers') {
         await interaction.reply({ embeds: [printServers()] });
     } else if (commandName === 'start') {
-        var selected = interaction.options.getInteger('server_number')
+        var selected = interaction.options.getInteger('server_number');
         if (numberOutOfRange(selected)) {
             await interaction.reply(selected.toString() + " is not a server!");
         } else {
-            var server = servers_data.servers[selected]
-            var java_path = servers_data.versions[servers_data.servers[selected].ver]
-            var minimum_ram = server.minram
-            var maximum_ram = server.maxram
-            var name = server.name
-            var dir = getPath(server.path)
-            var path = server.path
-            await interaction.reply(`Starting server ${name}`)
-            processes[selected] = child_process.exec(`cd ${dir} && ${java_path} -Xms${minimum_ram}M -Xmx${maximum_ram}M -jar ${path} nogui`)
-            processes[selected].stdout.on("data", (data) => {processOutput(data, interaction, selected)})
+            var server = servers_data.servers[selected];
+            var java_path = servers_data.versions[servers_data.servers[selected].ver];
+            var minimum_ram = server.minram;
+            var maximum_ram = server.maxram;
+            var name = server.name;
+            var dir = getPath(server.path);
+            var path = server.path;
+            await interaction.reply(`Starting server ${name}`);
+            processes[selected] = child_process.exec(`cd ${dir} && ${java_path} -Xms${minimum_ram}M -Xmx${maximum_ram}M -jar ${path} nogui`);
+            processes[selected].stdout.on("data", (data) => {processOutput(data, interaction, selected)});
         }
     } else if (commandName === 'cmd') {
-        var selected = interaction.options.getInteger('server_number')
-        var command = interaction.options.getString('command')
+        var selected = interaction.options.getInteger('server_number');
+        var command = interaction.options.getString('command');
         if (numberOutOfRange(selected)) {
-            await interaction.reply(selected.toString() + " is not a server!")
+            await interaction.reply(selected.toString() + " is not a server!");
         } else {
             if (processes[selected]) {
-                await interaction.reply("Executed command " + command)
-                processes[selected].stdin.write(command + '\n')
+                await interaction.reply("Executed command " + command);
+                processes[selected].stdin.write(command + '\n');
             } else {
-                await interaction.reply("This server is currently not running")
+                await interaction.reply("This server is currently not running");
             }
         }
     } else if (commandName === 'who') {
-        var selected = interaction.options.getInteger('server_number')
+        var selected = interaction.options.getInteger('server_number');
         if (numberOutOfRange(selected)) {
-            await interaction.reply(selected.toString() + " is not a server!")
+            await interaction.reply(selected.toString() + " is not a server!");
         } else {
             if (processes[selected]) {
-                await interaction.reply("Listing")
-                processes[selected].stdin.write('/list\n')
+                await interaction.reply("Listing");
+                processes[selected].stdin.write('/list\n');
             } else {
-                await interaction.reply("This server is currently not running")
+                await interaction.reply("This server is currently not running");
             }
         }
     } else if (commandName === 'stop') {
-        var selected = interaction.options.getInteger('server_number')
+        var selected = interaction.options.getInteger('server_number');
         if (numberOutOfRange(selected)) {
-            await interaction.reply(selected.toString() + " is not a server!")
+            await interaction.reply(selected.toString() + " is not a server!");
         } else {
             if (processes[selected]) {
-                await interaction.reply("Stopping server " + selected.toString())
-                processes[selected].stdin.write('stop\n')
+                await interaction.reply("Stopping server " + selected.toString());
+                processes[selected].stdin.write('stop\n');
                 running[selected] = false;
             } else {
-                await interaction.reply("This server is currently not running")
+                await interaction.reply("This server is currently not running");
             }
         }
     }
 });
 function numberOutOfRange(selected){
     if(selected >= servers_data.servers.length | selected < 0){
-        return true
+        return true;
     } else {
-        return false
+        return false;
     }
 }
 function processOutput(data, interaction, selected) {
@@ -92,21 +92,21 @@ function processOutput(data, interaction, selected) {
         await interaction.followUp(data.toString().substring(data.indexOf("<", 30)) + "\n");
     }
 }
-function getPath(string) {
-    var last = string.lastIndexOf('/');
-    var path = string.substring(0, last + 1)
+function getPath(pathString) {
+    var last = pathString.lastIndexOf('/');
+    var path = pathString.substring(0, last + 1);
     return path
 }
 function printServers() {
     var message = ''
     for (server in servers_data["servers"]) {
-        message = message.concat(`[${server}] ${servers_data["servers"][server].name} | Online ${running[server]} \n`)
+        message = message.concat(`[${server}] ${servers_data["servers"][server].name} | Online ${running[server]} \n`);
     }
     const serverEmbed = new discord.MessageEmbed()
         .setColor("#F9734E")
         .setTitle("Servers")
-        .setDescription(message)
-    return serverEmbed
+        .setDescription(message);
+    return serverEmbed;
 }
 const helpEmbed = new discord.MessageEmbed()
     .setColor("#F9734E")
