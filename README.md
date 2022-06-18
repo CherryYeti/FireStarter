@@ -54,7 +54,7 @@ Fedora : dnf module install nodejs:17
 
 # SETUP INFO - (YOU COULD PROBABLY INCLUDE THIS INFO IN FURTHER UP THE PAGE - LIKE MAYBE SOME OF IT UNDER THE FIRST 3 SECTIONS???)
 The file called SERVERS.json will act as your way to add servers and java installations
-For the "versions" entry, you want to put the path to your java executable, as well as the version. I recommend openjdk.
+For the "versions" entry, you want to put the path to your java executable, as well as the version. I personally recommend openjdk.
 You will most likeley need to install both Java 8 and Java 17, as mojang decided that games from 1.18 onwards will need to run java 17
 The ram options are in MB. [https://www.gbmb.org/gb-to-mb]
 
