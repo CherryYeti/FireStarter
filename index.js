@@ -95,7 +95,7 @@ function processOutput(data, interaction, selected) {
 function getPath(pathString) {
     var last = pathString.lastIndexOf('/');
     var path = pathString.substring(0, last + 1);
-    return path
+    return path;
 }
 function printServers() {
     var message = ''
