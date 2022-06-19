@@ -27,7 +27,7 @@ The ram options are in MB. [https://www.gbmb.org/gb-to-mb]
 
 ### Windows
 1. Download java 18 from https://adoptium.net/temurin/releases/?version=18
-2. Download java 8 from https://adoptium.net/temurin/releases/?version=18
+2. Download java 8 from https://adoptium.net/temurin/releases/?version=8
 
 ### Mac
 1. Open the terminal
