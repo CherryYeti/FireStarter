@@ -23,7 +23,13 @@ For the "versions" entry, you want to put the path to your java executable, as w
 You will most likely need to install both Java 8 and Java 18, as mojang decided that games from 1.18 onwards will need to run java 17.
 The ram options are in MB. [https://www.gbmb.org/gb-to-mb]
 
-## Multiple Java versions for Mac
+## Multiple Java versions
+
+### Windows
+1. Download java 18 from https://adoptium.net/temurin/releases/?version=18
+2. Download java 8 from https://adoptium.net/temurin/releases/?version=18
+
+### Mac
 1. Open the terminal
 2. Install homebrew by typing `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 3. Type `brew install openjdk@8` the path should be `/usr/local/opt/openjdk@8/bin/java`
