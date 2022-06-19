@@ -2,10 +2,9 @@ const fs = require('fs');
 const discord = require('discord.js');
 const child_process = require('child_process');
 const {token} = require('./config.json');
-
+const servers_data = JSON.parse(fs.readFileSync('SERVERS.json'));
 var processes = new Array(servers_data.servers.length);
 var running = new Array(servers_data.servers.length).fill(false);
-const servers_data = JSON.parse(fs.readFileSync('SERVERS.json'));
 const client = new discord.Client({ intents: [discord.Intents.FLAGS.GUILDS] });
 client.once('ready', () => { console.log('Ready to work!'); });
 client.on('interactionCreate', async interaction => {
@@ -90,6 +89,8 @@ async function processOutput(data, interaction, selected) {
         await interaction.followUp(data.toString().substring(data.indexOf(":", 30) + 2) + "\n");
     } else if (data.includes("<")) {
         await interaction.followUp(data.toString().substring(data.indexOf("<", 30)) + "\n");
+    } else if (data.includes("EULA")) {
+        await interaction.followUp("You must accept the EULA for server " + selected + " before you can start it");
     }
 }
 function getPath(pathString) {
