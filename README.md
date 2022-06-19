@@ -47,8 +47,9 @@ Fedora: `sudo dnf install java-1.8.0-openjdk java-17-openjdk`
 ## Windows
 1. Click on the download code button in the main page and save the zip file anywhere
 2. Extract files
-3. Open Command Prompt (cmd) and navigate to the folder that you just unzipped to using `cd` to change directories and `dir` to list all directories 
-4. Type `npm i` once you are inside the folder to install the necessary dependencies
+3. Open the folder and select and copy the top bar
+4. Open the Command Prompt and type `cd ` then paste the path
+5. Type `npm i` once you are inside the folder to install the necessary dependencies
 
 ## Mac
 1. Click on the download code button and move the FireStarter folder anywhere.
