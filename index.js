@@ -78,7 +78,7 @@ function numberOutOfRange(selected){
         return false;
     }
 }
-function processOutput(data, interaction, selected) {
+async function processOutput(data, interaction, selected) {
     if (data.includes("For help, type ")) {
         await interaction.followUp("Server is now up!");
         running[selected] = true;
