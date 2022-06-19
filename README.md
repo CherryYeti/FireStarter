@@ -1,6 +1,6 @@
 Welcome to FireStarter!
 
-FireStarter is an open source discord bot coded to help start, stop and manage your minecraft servers!
+FireStarter is a free and open source discord bot coded to help start, stop and manage your minecraft servers!
 
 # PREREQUISITES
 Node.js 16.6.0 or newer is required.
