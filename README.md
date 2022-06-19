@@ -35,6 +35,13 @@ The ram options are in MB. [https://www.gbmb.org/gb-to-mb]
 3. Type `brew install openjdk@8` the path should be `/usr/local/opt/openjdk@8/bin/java`
 3. Type `brew install openjdk@18` the path should be `/usr/local/opt/openjdk@18/bin/java`
 
+### Linux
+
+Debian/Ubuntu : `sudo apt install openjdk-8-jdk openjdk-17-jdk`
+
+Arch: `sudo pacman -S jdk-openjdk jdk8-openjdk`
+
+Fedora: `sudo dnf install java-1.8.0-openjdk java-17-openjdk'
 
 # INSTALLATION
 ## Windows
