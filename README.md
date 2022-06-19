@@ -13,7 +13,7 @@ Debian/Ubuntu : `sudo apt install nodejs`
 
 Arch : `sudo pacman -S nodejs`
 
-Fedora : `dnf module install nodejs:18`
+Fedora : `sudo dnf module install nodejs:16/development`
 
 openSuse `zypper install nodejs18`
 
