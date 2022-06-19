@@ -91,6 +91,7 @@ async function processOutput(data, interaction, selected) {
         await interaction.followUp(data.toString().substring(data.indexOf("<", 30)) + "\n");
     } else if (data.includes("EULA")) {
         await interaction.followUp("You must accept the EULA for server " + selected + " before you can start it");
+        running[selected] = false;
     }
 }
 function getPath(pathString) {
