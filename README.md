@@ -41,7 +41,7 @@ Debian/Ubuntu : `sudo apt install openjdk-8-jdk openjdk-17-jdk`
 
 Arch: `sudo pacman -S jdk-openjdk jdk8-openjdk`
 
-Fedora: `sudo dnf install java-1.8.0-openjdk java-17-openjdk'
+Fedora: `sudo dnf install java-1.8.0-openjdk java-17-openjdk`
 
 # INSTALLATION
 ## Windows
