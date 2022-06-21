@@ -39,26 +39,34 @@ The ram options are in MB. [https://www.gbmb.org/gb-to-mb]
 
 Debian/Ubuntu : `sudo apt install openjdk-8-jdk openjdk-17-jdk`
 
-Paths :
+Paths : 
+<br>
 8:`usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java`
+<br>
 17:`usr/lib/jvm/java-17-openjdk-amd64/bin/java`
 
 Arch : `sudo pacman -S jdk-openjdk jdk8-openjdk`
 
 Paths :
+<br>
 8:`/usr/lib/jvm/java-8-openjdk/jre/bin/java`
+<br>
 18:`/usr/lib/jvm/java-18-openjdk/bin/java`
 
 Fedora : `sudo dnf install java-1.8.0-openjdk java-17-openjdk`
 
 Paths :
+<br>
 8:`/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.332.b09-1.fc36.x86_64/jre/bin/java`
+<br>
 17:`/usr/lib/jvm/java-17-openjdk-17.0.3.0.7-1.fc36.x86_64/bin/java`
 
 OpenSuse : `sudo zypper in java-1_8_0-openjdk java-18-openjdk`
 
 Paths :
+<br>
 8:`/usr/lib64/jvm/java-1.8.0-openjdk-1.8.0/jre/bin/java`
+<br>
 18:`/usr/lib64/jvm/java18-openjdk-18/bin/java`
 
 # INSTALLATION
