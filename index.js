@@ -20,7 +20,7 @@ client.on('interactionCreate', async interaction => {
             await interaction.reply(selected.toString() + " is not a server!");
         } else {
             var server = servers_data.servers[selected];
-            var java_path = servers_data.versions[servers_data.servers[selected].ver];
+            var java_path = servers_data.versions[server.ver];
             var minimum_ram = server.minram;
             var maximum_ram = server.maxram;
             var name = server.name;
