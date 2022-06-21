@@ -110,18 +110,6 @@ function printServers() {
         .setDescription(message);
     return serverEmbed;
 }
-// const helpEmbed = new discord.MessageEmbed()
-//     .setColor('#F9734E')
-//     .setTitle('HELP ME')
-//     .setDescription('List of commands')
-//     .addFields(
-//         { name: '/help', value: 'What brought you here' },
-//         { name: '/servers', value: 'Lists all available servers' },
-//         { name: '/start (server number)', value: 'Starts server with corresponding value' },
-//         { name: '/stop (server number)', value: 'Stops server with corresponding value' },
-//         { name: '/cmd (server number) (command)', value: 'Execute command with corresponding server (NO SLASHES)' },
-//         { name: '/who (server number)', value: 'Lists who is on the corresponding server' }
-//     ).setFooter('Made by CherryYeti', 'https://i.ibb.co/TKLgBhh/unnamed.jpg');
 const helpEmbed = {
     color: 0xF9734E,
     title: 'HELP ME',
