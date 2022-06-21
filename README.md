@@ -36,7 +36,9 @@ The ram options are in MB. [https://www.gbmb.org/gb-to-mb]
 2. Download java 8 from https://adoptium.net/temurin/releases/?version=8
 <br>
 Paths:
+<br>
 8: C:/\"Program Files\"/\"Eclipse Adoptium\"/jdk-8.0.332.9-hotspot/bin/java
+<br>
 18:C:/\"Program Files\"/\"Eclipse Adoptium\"/jdk-18.0.1.10-hotspot/bin/java
 
 ## NOTE
