@@ -1,21 +1,27 @@
-Welcome to FireStarter!
+## Welcome to FireStarter!
 
 FireStarter is a free and open source discord bot coded to help start, stop and manage your minecraft servers!
 
 # PREREQUISITES
-Node.js 16.6.0 or newer is required.
+## Node.js 16.6.0 or newer is required.
 
-Windows :  You can download nodejs from https://nodejs.org/en/download/
+## Windows
+You can download nodejs from https://nodejs.org/en/download/
 
-Mac : You can download nodejs from https://nodejs.org/en/download/
+## Mac
+You can download nodejs from https://nodejs.org/en/download/
+## Linux
+### Debian/Ubuntu
+`sudo apt install nodejs`
 
-Debian/Ubuntu : `sudo apt install nodejs`
+### Arch
+`sudo pacman -S nodejs`
 
-Arch : `sudo pacman -S nodejs`
+### Fedora
+`sudo dnf module install nodejs:16/development`
 
-Fedora : `sudo dnf module install nodejs:16/development`
-
-openSuse `zypper install nodejs18`
+### openSuse
+`zypper install nodejs18`
 
 
 The file called SERVERS.json will act as your way to add servers and java installations.
@@ -25,12 +31,12 @@ The ram options are in MB. [https://www.gbmb.org/gb-to-mb]
 
 ## Multiple Java versions
 
-### Windows
+## Windows
 1. Download java 18 from https://adoptium.net/temurin/releases/?version=18
 2. Download java 8 from https://adoptium.net/temurin/releases/?version=8
 
-### Mac
-1. Open the terminal
+## Mac
+1. Open the terminal app
 2. Install homebrew by typing `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 3. Type `brew install openjdk@8 openjdk@18`
 <br>
@@ -40,9 +46,9 @@ Paths :
 <br>
 18:`/usr/local/opt/openjdk@18/bin/java`
 
-### Linux
+## Linux
 
-### Debian/Ubuntu :
+### Debian/Ubuntu
  `sudo apt install openjdk-8-jdk openjdk-17-jdk`
 
 Paths : 
@@ -51,7 +57,7 @@ Paths :
 <br>
 17:`/usr/lib/jvm/java-17-openjdk-amd64/bin/java`
 
-### Arch :
+### Arch
  `sudo pacman -S jdk-openjdk jdk8-openjdk`
 
 Paths :
@@ -60,7 +66,7 @@ Paths :
 <br>
 18:`/usr/lib/jvm/java-18-openjdk/bin/java`
 
-### Fedora :
+### Fedora
  `sudo dnf install java-1.8.0-openjdk java-17-openjdk`
 
 Paths :
@@ -69,7 +75,7 @@ Paths :
 <br>
 17:`/usr/lib/jvm/java-17-openjdk-17.0.3.0.7-1.fc36.x86_64/bin/java`
 
-### OpenSuse :
+### OpenSuse
  `sudo zypper in java-1_8_0-openjdk java-18-openjdk`
 
 Paths :
@@ -89,6 +95,7 @@ Paths :
 ## Mac
 1. Click on the download code button and move the FireStarter folder anywhere.
 2. Open the terminal and navigate to the directory
+3. Type `npm i` to install the necessary dependencies
 
 ## Linux
 1. Download zip or type `git clone https://github.com/CherryYeti/FireStarter/` into the terminal
