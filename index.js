@@ -1,7 +1,7 @@
 const fs = require('fs');
 const discord = require('discord.js');
 const child_process = require('child_process');
-const {token} = require('./config.json');
+const { token } = require('./config.json');
 const servers_data = JSON.parse(fs.readFileSync('SERVERS.json'));
 var processes = new Array(servers_data.servers.length);
 var running = new Array(servers_data.servers.length).fill(false);
@@ -28,7 +28,7 @@ client.on('interactionCreate', async interaction => {
             var path = server.path;
             await interaction.reply(`Starting server ${name}`);
             processes[selected] = child_process.exec(`cd ${dir} && ${java_path} -Xms${minimum_ram}M -Xmx${maximum_ram}M -jar ${path} nogui`);
-            processes[selected].stdout.on('data', (data) => {processOutput(data, interaction, selected)});
+            processes[selected].stdout.on('data', (data) => { processOutput(data, interaction, selected) });
         }
     } else if (commandName === 'cmd') {
         var selected = interaction.options.getInteger('server_number');
@@ -70,8 +70,8 @@ client.on('interactionCreate', async interaction => {
         }
     }
 });
-function numberOutOfRange(selected){
-    if(selected >= servers_data.servers.length | selected < 0){
+function numberOutOfRange(selected) {
+    if (selected >= servers_data.servers.length | selected < 0) {
         return true;
     } else {
         return false;
@@ -110,16 +110,39 @@ function printServers() {
         .setDescription(message);
     return serverEmbed;
 }
-const helpEmbed = new discord.MessageEmbed()
-    .setColor('#F9734E')
-    .setTitle('HELP ME')
-    .setDescription('List of commands')
-    .addFields(
-        { name: '/help', value: 'What brought you here' },
-        { name: '/servers', value: 'Lists all available servers' },
-        { name: '/start (server number)', value: 'Starts server with corresponding value' },
-        { name: '/stop (server number)', value: 'Stops server with corresponding value' },
-        { name: '/cmd (server number) (command)', value: 'Execute command with corresponding server (NO SLASHES)' },
-        { name: '/who (server number)', value: 'Lists who is on the corresponding server' }
-    ).setFooter('Made by CherryYeti', 'https://i.ibb.co/TKLgBhh/unnamed.jpg');
+// const helpEmbed = new discord.MessageEmbed()
+//     .setColor('#F9734E')
+//     .setTitle('HELP ME')
+//     .setDescription('List of commands')
+//     .addFields(
+//         { name: '/help', value: 'What brought you here' },
+//         { name: '/servers', value: 'Lists all available servers' },
+//         { name: '/start (server number)', value: 'Starts server with corresponding value' },
+//         { name: '/stop (server number)', value: 'Stops server with corresponding value' },
+//         { name: '/cmd (server number) (command)', value: 'Execute command with corresponding server (NO SLASHES)' },
+//         { name: '/who (server number)', value: 'Lists who is on the corresponding server' }
+//     ).setFooter('Made by CherryYeti', 'https://i.ibb.co/TKLgBhh/unnamed.jpg');
+const helpEmbed = {
+    color: 0xF9734E,
+    title: 'HELP ME',
+    description: 'List of commands',
+    fields: [
+        {name: '/help',
+        value: 'What brought you here',},
+        {name: '/servers',
+        value: 'Lists all available servers',},
+        {name: '/start',
+        value: 'Starts server with corresponding value',},
+        {name: '/stop',
+        value: 'Stops server with corresponding value',},
+        {name: '/cmd',
+        value: 'Execute command with corresponding server (NO SLASHES)',},
+        {name: '/who',
+        value: 'Lists who is on the corresponding server',}
+    ],
+    footer: {
+        text: 'Made by CherryYeti',
+        icon_url: 'https://i.ibb.co/TKLgBhh/unnamed.jpg',
+    },
+};
 client.login(token);
