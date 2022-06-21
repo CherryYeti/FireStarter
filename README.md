@@ -46,9 +46,9 @@ Debian/Ubuntu : `sudo apt install openjdk-8-jdk openjdk-17-jdk`
 
 Paths : 
 <br>
-8:  `usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java`
+8:  `/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java`
 <br>
-17:`usr/lib/jvm/java-17-openjdk-amd64/bin/java`
+17:`/usr/lib/jvm/java-17-openjdk-amd64/bin/java`
 
 Arch : `sudo pacman -S jdk-openjdk jdk8-openjdk`
 
