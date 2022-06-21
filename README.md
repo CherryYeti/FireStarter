@@ -42,7 +42,8 @@ Paths :
 
 ### Linux
 
-Debian/Ubuntu : `sudo apt install openjdk-8-jdk openjdk-17-jdk`
+### Debian/Ubuntu :
+ `sudo apt install openjdk-8-jdk openjdk-17-jdk`
 
 Paths : 
 <br>
@@ -50,7 +51,8 @@ Paths :
 <br>
 17:`/usr/lib/jvm/java-17-openjdk-amd64/bin/java`
 
-Arch : `sudo pacman -S jdk-openjdk jdk8-openjdk`
+### Arch :
+ `sudo pacman -S jdk-openjdk jdk8-openjdk`
 
 Paths :
 <br>
@@ -58,7 +60,8 @@ Paths :
 <br>
 18:`/usr/lib/jvm/java-18-openjdk/bin/java`
 
-Fedora : `sudo dnf install java-1.8.0-openjdk java-17-openjdk`
+### Fedora :
+ `sudo dnf install java-1.8.0-openjdk java-17-openjdk`
 
 Paths :
 <br>
@@ -66,7 +69,8 @@ Paths :
 <br>
 17:`/usr/lib/jvm/java-17-openjdk-17.0.3.0.7-1.fc36.x86_64/bin/java`
 
-OpenSuse : `sudo zypper in java-1_8_0-openjdk java-18-openjdk`
+### OpenSuse :
+ `sudo zypper in java-1_8_0-openjdk java-18-openjdk`
 
 Paths :
 <br>
