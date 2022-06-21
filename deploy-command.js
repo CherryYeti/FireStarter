@@ -11,7 +11,7 @@ const commands = [
 	new SlashCommandBuilder().setName('cmd').setDescription('Execute command with corresponding server').addIntegerOption(option =>option.setName('server_number').setDescription('Server number').setRequired(true)).addStringOption(option =>option.setName('command').setDescription('Command to execute').setRequired(true)),
 	new SlashCommandBuilder().setName('who').setDescription('Lists who is on the corresponding server').addIntegerOption(option =>option.setName('server_number').setDescription('Server number').setRequired(true))
 ]
-	.map(command => command.toJSON());
+.map(command => command.toJSON());
 const rest = new REST({ version: '9' }).setToken(token);
 rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
 	.then(() => console.log('Successfully registered application commands.'))
