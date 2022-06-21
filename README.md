@@ -32,8 +32,12 @@ The ram options are in MB. [https://www.gbmb.org/gb-to-mb]
 ### Mac
 1. Open the terminal
 2. Install homebrew by typing `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-3. Type `brew install openjdk@8` the path should be `/usr/local/opt/openjdk@8/bin/java`
-3. Type `brew install openjdk@18` the path should be `/usr/local/opt/openjdk@18/bin/java`
+3. Type `brew install openjdk@8 openjdk@18`
+<br>
+Paths :
+<br>
+8:  `/usr/local/opt/openjdk@8/bin/java`
+18:`/usr/local/opt/openjdk@18/bin/java`
 
 ### Linux
 
