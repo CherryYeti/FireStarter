@@ -37,9 +37,9 @@ The ram options are in MB. [https://www.gbmb.org/gb-to-mb]
 <br>
 Paths:
 <br>
-8: C:/\"Program Files\"/\"Eclipse Adoptium\"/jdk-8.0.332.9-hotspot/bin/java
+8: `C:/\"Program Files\"/\"Eclipse Adoptium\"/jdk-8.0.332.9-hotspot/bin/java`
 <br>
-18:C:/\"Program Files\"/\"Eclipse Adoptium\"/jdk-18.0.1.10-hotspot/bin/java
+18:`C:/\"Program Files\"/\"Eclipse Adoptium\"/jdk-18.0.1.10-hotspot/bin/java`
 
 ## NOTE
 ### If you have spaces in any of the paths, you need to put \\"around the spaced words
