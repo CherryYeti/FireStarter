@@ -20,7 +20,7 @@ You can download nodejs from https://nodejs.org/en/download/
 ### Fedora
 `sudo dnf module install nodejs:16/development`
 
-### openSuse
+### OpenSuse
 `zypper install nodejs18`
 
 
