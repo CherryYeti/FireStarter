@@ -37,6 +37,7 @@ The ram options are in MB. [https://www.gbmb.org/gb-to-mb]
 Paths :
 <br>
 8:  `/usr/local/opt/openjdk@8/bin/java`
+<br>
 18:`/usr/local/opt/openjdk@18/bin/java`
 
 ### Linux
