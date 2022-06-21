@@ -20,7 +20,7 @@ You can download nodejs from https://nodejs.org/en/download/
 ### Fedora
 `sudo dnf module install nodejs:16/development`
 
-### openSuse
+### OpenSuse
 `zypper install nodejs18`
 
 
@@ -34,7 +34,18 @@ The ram options are in MB. [https://www.gbmb.org/gb-to-mb]
 ## Windows
 1. Download java 18 from https://adoptium.net/temurin/releases/?version=18
 2. Download java 8 from https://adoptium.net/temurin/releases/?version=8
+<br>
+Paths:
+<br>
+8: `C:/\"Program Files\"/\"Eclipse Adoptium\"/jdk-8.0.332.9-hotspot/bin/java`
+<br>
+18:`C:/\"Program Files\"/\"Eclipse Adoptium\"/jdk-18.0.1.10-hotspot/bin/java`
 
+## NOTE
+### If you have spaces in any of the paths, you need to put \\"around the spaced words
+### Ex. 
+### Instead of C:/Program Files/ 
+### It is C:/\\"Program Files\\"/
 ## Mac
 1. Open the terminal app
 2. Install homebrew by typing `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
@@ -49,7 +60,7 @@ Paths :
 ## Linux
 
 ### Debian/Ubuntu
- `sudo apt install openjdk-8-jdk openjdk-17-jdk`
+`sudo apt install openjdk-8-jdk openjdk-17-jdk`
 
 Paths : 
 <br>
