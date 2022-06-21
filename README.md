@@ -60,7 +60,7 @@ Paths :
 ## Linux
 
 ### Debian/Ubuntu
- `sudo apt install openjdk-8-jdk openjdk-17-jdk`
+`sudo apt install openjdk-8-jdk openjdk-17-jdk`
 
 Paths : 
 <br>
