@@ -5,6 +5,7 @@
     "discord-api-types": "^0.34.0",
     "discord.js": "^13.8.0"
   },
+  "license": "MIT",
   "scripts": {
     "deploy":"node deploy-command.js"
   }
