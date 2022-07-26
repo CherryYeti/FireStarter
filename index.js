@@ -17,6 +17,7 @@ client.on('interactionCreate', async interaction => {
     } else if (commandName === 'servers') {
         await interaction.reply({ embeds: [printServers()] });
     } else if (commandName === 'start') {
+        //Get command paramaters
         var selected = interaction.options.getInteger('server_number');
         if (numberOutOfRange(selected)) {
             await interaction.reply(selected.toString() + ' is not a server!');
@@ -30,10 +31,13 @@ client.on('interactionCreate', async interaction => {
             var dir = getPath(server.path);
             var path = server.path;
             await interaction.reply(`Starting server ${name}`);
+            //Start the server and save it as an array element
             processes[selected] = child_process.exec(`cd ${dir} && ${java_path} -Xms${minimum_ram}M -Xmx${maximum_ram}M -jar ${path} nogui`);
+            //Pipe output data to a function
             processes[selected].stdout.on('data', (data) => { processOutput(data, interaction, selected) });
         }
     } else if (commandName === 'cmd') {
+        //Get command paramaters
         var selected = interaction.options.getInteger('server_number');
         var command = interaction.options.getString('command');
         if (numberOutOfRange(selected)) {
@@ -47,6 +51,7 @@ client.on('interactionCreate', async interaction => {
             }
         }
     } else if (commandName === 'who') {
+        //Get command paramaters
         var selected = interaction.options.getInteger('server_number');
         if (numberOutOfRange(selected)) {
             await interaction.reply(selected.toString() + ' is not a server!');
@@ -74,6 +79,7 @@ client.on('interactionCreate', async interaction => {
     }
 });
 function numberOutOfRange(selected) {
+    //Checks if sever paramater in command is valid
     if (selected >= servers_data.servers.length | selected < 0) {
         return true;
     } else {
@@ -81,6 +87,7 @@ function numberOutOfRange(selected) {
     }
 }
 async function processOutput(data, interaction, selected) {
+    //Dictates responses to certain keywords in server output
     if (data.includes('For help, type ')) {
         await interaction.followUp('Server is now up!');
         running[selected] = true;
@@ -98,11 +105,13 @@ async function processOutput(data, interaction, selected) {
     }
 }
 function getPath(pathString) {
+    //Grab path to change to before launching server
     var last = pathString.lastIndexOf('/');
     var path = pathString.substring(0, last + 1);
     return path;
 }
 function printServers() {
+    //Lists all servers
     var message = ''
     for (server in servers_data['servers']) {
         message = message.concat(`[${server}] ${servers_data['servers'][server].name} | Online ${running[server]} \n`);
@@ -118,18 +127,30 @@ const helpEmbed = {
     title: 'HELP ME',
     description: 'List of commands',
     fields: [
-        {name: '/help',
-        value: 'What brought you here',},
-        {name: '/servers',
-        value: 'Lists all available servers',},
-        {name: '/start',
-        value: 'Starts server with corresponding value',},
-        {name: '/stop',
-        value: 'Stops server with corresponding value',},
-        {name: '/cmd',
-        value: 'Execute command with corresponding server (NO SLASHES)',},
-        {name: '/who',
-        value: 'Lists who is on the corresponding server',}
+        {
+            name: '/help',
+            value: 'What brought you here',
+        },
+        {
+            name: '/servers',
+            value: 'Lists all available servers',
+        },
+        {
+            name: '/start',
+            value: 'Starts server with corresponding value',
+        },
+        {
+            name: '/stop',
+            value: 'Stops server with corresponding value',
+        },
+        {
+            name: '/cmd',
+            value: 'Execute command with corresponding server (NO SLASHES)',
+        },
+        {
+            name: '/who',
+            value: 'Lists who is on the corresponding server',
+        }
     ],
     footer: {
         text: 'Made by CherryYeti',
