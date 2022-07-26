@@ -1,12 +1,14 @@
-const fs = require('fs');
-const discord = require('discord.js');
-const child_process = require('child_process');
 const { token } = require('./config.json');
-const servers_data = JSON.parse(fs.readFileSync('SERVERS.json'));
+const child_process = require('child_process');
+const client = new discord.Client({ intents: [discord.Intents.FLAGS.GUILDS] });
+const discord = require('discord.js');
+const fs = require('fs');
+const servers_data = JSON.parse(fs.readFileSync('servers.json'));
 var processes = new Array(servers_data.servers.length);
 var running = new Array(servers_data.servers.length).fill(false);
-const client = new discord.Client({ intents: [discord.Intents.FLAGS.GUILDS] });
+//Allows the bot to sign in
 client.once('ready', () => { console.log('Ready to work!'); });
+//Runs whenever the bot receives a command
 client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
     const { commandName } = interaction;
@@ -19,6 +21,7 @@ client.on('interactionCreate', async interaction => {
         if (numberOutOfRange(selected)) {
             await interaction.reply(selected.toString() + ' is not a server!');
         } else {
+            //Grab settings from servers.json file
             var server = servers_data.servers[selected];
             var java_path = servers_data.versions[server.ver];
             var minimum_ram = server.minram;
