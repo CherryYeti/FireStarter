@@ -1,7 +1,7 @@
 const { token } = require('./config.json');
 const child_process = require('child_process');
-const client = new discord.Client({ intents: [discord.Intents.FLAGS.GUILDS] });
 const discord = require('discord.js');
+const client = new discord.Client({ intents: [discord.Intents.FLAGS.GUILDS] });
 const fs = require('fs');
 const servers_data = JSON.parse(fs.readFileSync('servers.json'));
 var processes = new Array(servers_data.servers.length);
