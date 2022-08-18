@@ -1,7 +1,7 @@
 const { token } = require('./config.json');
 const child_process = require('child_process');
-const { Client, GatewayIntentBits, MessageEmbed } = require('discord.js');
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const discord = require('discord.js');
+const client = new discord.Client({ intents: [discord.GatewayIntentBits.Guilds] });
 const fs = require('fs');
 const servers_data = JSON.parse(fs.readFileSync('servers.json'));
 var processes = new Array(servers_data.servers.length);
@@ -117,16 +117,18 @@ function printServers() {
         for (server in servers_data['servers']) {
             message = message.concat(`[${server}] ${servers_data['servers'][server].name} | Online ${running[server]} \n`);
         }
-        const serverEmbed = new MessageEmbed()
-            .setColor('#F9734E')
-            .setTitle('Servers')
-            .setDescription(message);
+        const serverEmbed = {
+            color: 0xF9734E,
+            title: 'Servers',
+            description: message,
+        }
         return serverEmbed;
     } else {
-        const noServersEmbed = new MessageEmbed()
-            .setColor('#F9734E')
-            .setTitle('Servers')
-            .setDescription("There are currently no servers added to firestarter");
+        const noServersEmbed = {
+            color: 0xF9734E,
+            title: 'Servers',
+            description: 'There are currently no servers added to firestarter',
+        }
         return noServersEmbed;
     }
     
