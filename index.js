@@ -112,15 +112,24 @@ function getPath(pathString) {
 }
 function printServers() {
     //Lists all servers
-    var message = ''
-    for (server in servers_data['servers']) {
-        message = message.concat(`[${server}] ${servers_data['servers'][server].name} | Online ${running[server]} \n`);
+    if(servers_data>0){
+        var message = ''
+        for (server in servers_data['servers']) {
+            message = message.concat(`[${server}] ${servers_data['servers'][server].name} | Online ${running[server]} \n`);
+        }
+        const serverEmbed = new MessageEmbed()
+            .setColor('#F9734E')
+            .setTitle('Servers')
+            .setDescription(message);
+        return serverEmbed;
+    } else {
+        const serverEmbed = new MessageEmbed()
+            .setColor('#F9734E')
+            .setTitle('Servers')
+            .setDescription("There are currently no servers added to firestarter");
+        return noServersEmbed;
     }
-    const serverEmbed = new MessageEmbed()
-        .setColor('#F9734E')
-        .setTitle('Servers')
-        .setDescription(message);
-    return serverEmbed;
+    
 }
 const helpEmbed = {
     color: 0xF9734E,
