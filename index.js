@@ -1,7 +1,7 @@
 const { token } = require('./config.json');
 const child_process = require('child_process');
-const discord = require('discord.js');
-const client = new discord.Client({ intents: [discord.Intents.FLAGS.GUILDS] });
+const { Client, GatewayIntentBits, MessageEmbed } = require('discord.js');
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const fs = require('fs');
 const servers_data = JSON.parse(fs.readFileSync('servers.json'));
 var processes = new Array(servers_data.servers.length);
@@ -116,7 +116,7 @@ function printServers() {
     for (server in servers_data['servers']) {
         message = message.concat(`[${server}] ${servers_data['servers'][server].name} | Online ${running[server]} \n`);
     }
-    const serverEmbed = new discord.MessageEmbed()
+    const serverEmbed = new MessageEmbed()
         .setColor('#F9734E')
         .setTitle('Servers')
         .setDescription(message);
