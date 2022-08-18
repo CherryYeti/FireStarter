@@ -123,7 +123,7 @@ function printServers() {
             .setDescription(message);
         return serverEmbed;
     } else {
-        const serverEmbed = new MessageEmbed()
+        const noServersEmbed = new MessageEmbed()
             .setColor('#F9734E')
             .setTitle('Servers')
             .setDescription("There are currently no servers added to firestarter");
