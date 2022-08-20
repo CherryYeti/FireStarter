@@ -113,7 +113,7 @@ function get_path(path_string) {
 }
 function print_servers() {
     //Lists all servers
-    if (servers_data > 0) {
+    if (servers_data.servers.length > 0) {
         var message = ''
         for (server in servers_data['servers']) {
             message = message.concat(`[${server}] ${servers_data['servers'][server].name} | Online ${running[server]} \n`);
