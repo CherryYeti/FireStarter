@@ -10,8 +10,9 @@ var running = new Array(servers_data.servers.length).fill(false);
 client.once('ready', () => { console.log('Ready to work!'); });
 //Runs whenever the bot receives a command
 client.on('interactionCreate', async interaction => {
-    if (!interaction.isCommand()) return;
-    const { command_name } = interaction;
+    if (!interaction.isChatInputCommand()) return;
+    const { commandName } = interaction;
+    command_name = commandName
     if (command_name === 'help') {
         await interaction.reply({ embeds: [help_embed] });
     } else if (command_name === 'servers') {
