@@ -1,10 +1,22 @@
 {
-    "versions": {
-      "8": "JAVA 8 PATH HERE",
-      "17": "JAVA 17 or 18 PATH HERE"
+  "versions": {
+    "8": "JAVA 8 PATH HERE",
+    "17": "JAVA 17 or 18 PATH HERE"
+  },
+  "servers": [
+    {
+      "name": "1.12",
+      "path": "/path/to/server.jar",
+      "ver": 8,
+      "minram": 4096,
+      "maxram": 4096
     },
-    "servers":[
-      {"name":"1.12","path" : "/path/to/server.jar","ver":8,"minram":4096,"maxram":4096},
-      {"name":"1.19","path" : "/path/to/server.jar","ver":17,"minram":4096,"maxram":4096}
-    ]
-  }
+    {
+      "name": "1.19",
+      "path": "/path/to/server.jar",
+      "ver": 17,
+      "minram": 4096,
+      "maxram": 4096
+    }
+  ]
+}

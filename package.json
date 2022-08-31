@@ -7,6 +7,10 @@
   },
   "license": "MIT",
   "scripts": {
-    "deploy":"node deploy-command.js"
+    "deploy": "node deploy-command.js",
+    "prettier": "prettier -w ."
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1"
   }
 }
