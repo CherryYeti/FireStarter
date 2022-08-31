@@ -1,4 +1,4 @@
-## Welcome to FireStarter!
+# Welcome to FireStarter
 
 FireStarter is a free and open source Discord bot used to start, stop and manage options on your minecraft servers using Node.js
 
