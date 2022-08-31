@@ -3,45 +3,45 @@ const child_process = require('child_process');
 const discord = require('discord.js');
 const fs = require('fs');
 const client = new discord.Client({ intents: [discord.GatewayIntentBits.Guilds] });
-const servers_data = JSON.parse(fs.readFileSync('servers.json'));
-var processes = new Array(servers_data.servers.length);
-var running = new Array(servers_data.servers.length).fill(false);
+const serversData = JSON.parse(fs.readFileSync('servers.json'));
+var processes = new Array(serversData.servers.length);
+var running = new Array(serversData.servers.length).fill(false);
 //Allows the bot to sign in`
 client.once('ready', () => { console.log('Ready to work!'); });
 //Runs whenever the bot receives a command
 client.on('interactionCreate', async interaction => {
     if (!interaction.isChatInputCommand()) return;
     const { commandName } = interaction;
-    command_name = commandName
-    if (command_name === 'help') {
-        await interaction.reply({ embeds: [help_embed] });
-    } else if (command_name === 'servers') {
-        await interaction.reply({ embeds: [print_servers()] });
-    } else if (command_name === 'start') {
+    commandName = commandName
+    if (commandName === 'help') {
+        await interaction.reply({ embeds: [helpEmbed] });
+    } else if (commandName === 'servers') {
+        await interaction.reply({ embeds: [printServers()] });
+    } else if (commandName === 'start') {
         //Get command paramaters
-        var selected = interaction.options.getInteger('server_number');
-        if (number_out_of_range(selected)) {
+        var selected = interaction.options.getInteger('serverNumber');
+        if (numberOutOfRange(selected)) {
             await interaction.reply(selected.toString() + ' is not a server!');
         } else {
             //Grab settings from servers.json file
-            var server = servers_data.servers[selected];
-            var java_path = servers_data.versions[server.ver];
-            var minimum_ram = server.minram;
-            var maximum_ram = server.maxram;
+            var server = serversData.servers[selected];
+            var javaPath = serversData.versions[server.ver];
+            var minimumRam = server.minram;
+            var maximumRam = server.maxram;
             var name = server.name;
-            var dir = get_path(server.path);
+            var dir = getPath(server.path);
             var path = server.path;
             await interaction.reply(`Starting server ${name}`);
             //Start the server and save it as an array element
-            processes[selected] = child_process.exec(`cd ${dir} && ${java_path} -Xms${minimum_ram}M -Xmx${maximum_ram}M -jar ${path} nogui`);
+            processes[selected] = child_process.exec(`cd ${dir} && ${javaPath} -Xms${minimumRam}M -Xmx${maximumRam}M -jar ${path} nogui`);
             //Pipe output data to a function
-            processes[selected].stdout.on('data', (data) => { process_output(data, interaction, selected) });
+            processes[selected].stdout.on('data', (data) => { processOutput(data, interaction, selected) });
         }
-    } else if (command_name === 'cmd') {
+    } else if (commandName === 'cmd') {
         //Get command paramaters
-        var selected = interaction.options.getInteger('server_number');
+        var selected = interaction.options.getInteger('serverNumber');
         var command = interaction.options.getString('command');
-        if (number_out_of_range(selected)) {
+        if (numberOutOfRange(selected)) {
             await interaction.reply(selected.toString() + ' is not a server!');
         } else {
             if (processes[selected]) {
@@ -51,10 +51,10 @@ client.on('interactionCreate', async interaction => {
                 await interaction.reply('This server is currently not running');
             }
         }
-    } else if (command_name === 'who') {
+    } else if (commandName === 'who') {
         //Get command paramaters
-        var selected = interaction.options.getInteger('server_number');
-        if (number_out_of_range(selected)) {
+        var selected = interaction.options.getInteger('serverNumber');
+        if (numberOutOfRange(selected)) {
             await interaction.reply(selected.toString() + ' is not a server!');
         } else {
             if (processes[selected]) {
@@ -64,9 +64,9 @@ client.on('interactionCreate', async interaction => {
                 await interaction.reply('This server is currently not running');
             }
         }
-    } else if (command_name === 'stop') {
-        var selected = interaction.options.getInteger('server_number');
-        if (number_out_of_range(selected)) {
+    } else if (commandName === 'stop') {
+        var selected = interaction.options.getInteger('serverNumber');
+        if (numberOutOfRange(selected)) {
             await interaction.reply(selected.toString() + ' is not a server!');
         } else {
             if (processes[selected]) {
@@ -79,15 +79,15 @@ client.on('interactionCreate', async interaction => {
         }
     }
 });
-function number_out_of_range(selected) {
+function numberOutOfRange(selected) {
     //Checks if sever paramater in command is valid
-    if (selected >= servers_data.servers.length | selected < 0) {
+    if (selected >= serversData.servers.length | selected < 0) {
         return true;
     } else {
         return false;
     }
 }
-async function process_output(data, interaction, selected) {
+async function processOutput(data, interaction, selected) {
     //Dictates responses to certain keywords in server output
     if (data.includes('For help, type ')) {
         await interaction.followUp('Server is now up!');
@@ -105,18 +105,18 @@ async function process_output(data, interaction, selected) {
         running[selected] = false;
     }
 }
-function get_path(path_string) {
+function getPath(pathString) {
     //Grab path to change to before launching server
-    var last = path_string.lastIndexOf('/');
-    var path = path_string.substring(0, last + 1);
+    var last = pathString.lastIndexOf('/');
+    var path = pathString.substring(0, last + 1);
     return path;
 }
-function print_servers() {
+function printServers() {
     //Lists all servers
-    if (servers_data.servers.length > 0) {
+    if (serversData.servers.length > 0) {
         var message = ''
-        for (server in servers_data['servers']) {
-            message = message.concat(`[${server}] ${servers_data['servers'][server].name} | Online ${running[server]} \n`);
+        for (server in serversData['servers']) {
+            message = message.concat(`[${server}] ${serversData['servers'][server].name} | Online ${running[server]} \n`);
         }
         const serverEmbed = {
             color: 0xF9734E,
@@ -134,7 +134,7 @@ function print_servers() {
     }
 
 }
-const help_embed = {
+const helpEmbed = {
     color: 0xF9734E,
     title: 'HELP ME',
     description: 'List of commands',
