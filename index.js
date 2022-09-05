@@ -144,6 +144,10 @@ function printServers() {
       color: 0xf9734e,
       title: "Servers",
       description: message,
+      footer: {
+        text: "Made by CherryYeti",
+        icon_url: "https://i.ibb.co/DC1GF9z/favicon.png",
+      },
     };
     return serverEmbed;
   } else {
@@ -151,6 +155,10 @@ function printServers() {
       color: 0xf9734e,
       title: "Servers",
       description: "There are currently no servers added to firestarter",
+      footer: {
+        text: "Made by CherryYeti",
+        icon_url: "https://i.ibb.co/DC1GF9z/favicon.png",
+      },
     };
     return noServersEmbed;
   }
