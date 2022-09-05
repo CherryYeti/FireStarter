@@ -187,7 +187,7 @@ const helpEmbed = {
   ],
   footer: {
     text: "Made by CherryYeti",
-    icon_url: "https://i.ibb.co/TKLgBhh/unnamed.jpg",
+    icon_url: "https://i.ibb.co/DC1GF9z/favicon.png",
   },
 };
 client.login(token);
