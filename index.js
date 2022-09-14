@@ -10,7 +10,7 @@ var processes = new Array(serversData.servers.length)
 var running = new Array(serversData.servers.length).fill(false)
 //Allows the bot to sign in`
 client.once('ready', () => {
-  console.log('FireStarter v2.0.4 ----- Built on 8/31/22 \nReady to work!')
+  console.log('FireStarter v2.0.5 ----- Built on 9/13/22 \nReady to work!')
 })
 //Runs whenever the bot receives a command
 client.on('interactionCreate', async (interaction) => {
