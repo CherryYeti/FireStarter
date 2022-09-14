@@ -1,15 +1,21 @@
 {
+  "name": "firestarter",
+  "homepage": "https://javandel.net/firestarter",
+  "version": "2.0.5",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "node deploy-command.js",
+    "start": "node index.js",
+    "prettier": "prettier -w ."
+  },
+  "keywords": ["minecraft","discord","javascript"],
+  "author": "Jason Javandel<jasonjavandel@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "@discordjs/builders": "^1.2.0",
     "@discordjs/rest": "^1.0.0",
     "discord-api-types": "^0.37.9",
     "discord.js": "^14.3.0",
     "eslint": "^8.23.1"
-  },
-  "license": "MIT",
-  "scripts": {
-    "deploy": "node deploy-command.js",
-    "prettier": "prettier -w ."
-  },
-  "devDependencies": {}
+  }
 }
