@@ -8,7 +8,7 @@
     "start": "node index.js",
     "prettier": "prettier -w ."
   },
-  "keywords": ["minecraft","discord","javascript"],
+  "keywords": ["minecraft","discord","discord-bot","javascript"],
   "author": "Jason Javandel<jasonjavandel@gmail.com>",
   "license": "MIT",
   "dependencies": {
