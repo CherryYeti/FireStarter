@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "deploy": "node deploy-command.js",
-    "start": "node index.js",
-    "prettier": "prettier -w ."
+    "start": "node index.js"
   },
   "keywords": ["minecraft","discord","discord-bot","javascript"],
   "author": "Jason Javandel<jasonjavandel@gmail.com>",

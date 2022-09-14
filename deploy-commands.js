@@ -4,7 +4,9 @@ const { Routes } = require('discord-api-types/v9')
 const { clientId, guildId, token } = require('./config.json')
 
 const commands = [
-  new SlashCommandBuilder().setName('help').setDescription('Get started'),
+  new SlashCommandBuilder()
+    .setName('help')
+    .setDescription('Get started'),
   new SlashCommandBuilder()
     .setName('servers')
     .setDescription('Lists all available servers'),
