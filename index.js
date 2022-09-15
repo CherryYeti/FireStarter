@@ -14,6 +14,7 @@ client.once('ready', () => {
 })
 //Runs whenever the bot receives a command
 client.on('interactionCreate', async (interaction) => {
+  var selected = interaction.options.getInteger('server_number')
   if (!interaction.isChatInputCommand()) return
   const { commandName } = interaction
   if (commandName === 'help') {
@@ -22,7 +23,6 @@ client.on('interactionCreate', async (interaction) => {
     await interaction.reply({ embeds: [printServers()] })
   } else if (commandName === 'start') {
     //Get command paramaters
-    var selected = interaction.options.getInteger('server_number')
     if (numberOutOfRange(selected)) {
       await interaction.reply(selected.toString() + ' is not a server!')
     } else {
