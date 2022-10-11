@@ -8,7 +8,7 @@ const client = new discord.Client({
 const serversData = JSON.parse(fs.readFileSync('servers.json'))
 var processes = new Array(serversData.servers.length)
 var running = new Array(serversData.servers.length).fill(false)
-//Allows the bot to sign in`
+//Runs once the bot logs in
 client.once('ready', () => {
   console.log('FireStarter v2.0.5 ----- Built on 9/13/22 \nReady to work!')
 })
