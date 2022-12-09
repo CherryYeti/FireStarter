@@ -4,5 +4,6 @@
     "dotenv": "^16.0.3",
     "fs": "^0.0.1-security",
     "ini": "^3.0.1"
-  }
+  },
+  "license": "GNU GPLv3"
 }
