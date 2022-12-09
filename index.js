@@ -28,7 +28,7 @@ const client = new discord.Client({
 //Client prints once it is connected
 client.once('ready', () => {
     console.log('FireStarter v2.1.0 ----- Built on 12/08/22 \nReady to work!')
-    //   deployCommands();
+      deployCommands();
 })
 
 client.on('interactionCreate', async (interaction) => {
