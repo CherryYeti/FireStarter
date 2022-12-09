@@ -151,7 +151,7 @@ function print_servers() {
       description: message,
       footer: {
         text: "Made by CherryYeti",
-        icon_url: "https://i.ibb.co/DC1GF9z/favicon.png",
+        icon_url: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Fire-dynamic-gradient.png",
       },
     };
     return serverEmbed;
@@ -162,7 +162,7 @@ function print_servers() {
       description: "There are currently no servers added to firestarter",
       footer: {
         text: "Made by CherryYeti",
-        icon_url: "https://i.ibb.co/DC1GF9z/favicon.png",
+        icon_url: "https://upload.wikimedia.org/wikipedia/commons/c/cc/Fire-dynamic-gradient.png",
       },
     };
     return noServersEmbed;

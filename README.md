@@ -1,7 +1,7 @@
 <h1 align="center">FireStarter</h1>
 
 <p align="center">
-  <img src="images/favicon.png" alt="firestarter-logo" width="120px" height="120px"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Fire-dynamic-gradient.png" alt="firestarter-logo" width="120px" height="120px"/>
   <br>
     <i>
       FireStarter is a free and open source Discord bot used to start, stop and manage options on your minecraft servers using Node.js
