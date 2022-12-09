@@ -1,7 +1,7 @@
 <h1 align="center">FireStarter</h1>
 
 <p align="center">
-  <img src="images/favicon.png" alt="angular-logo" width="120px" height="120px"/>
+  <img src="images/favicon.png" alt="firestarter-logo" width="120px" height="120px"/>
   <br>
     <i>
       FireStarter is a free and open source Discord bot used to start, stop and manage options on your minecraft servers using Node.js
@@ -47,7 +47,7 @@
 - Visit the [Node.js] website and download either the current or lts version
 
 ### MacOS
-  
+
 - Visit the [Node.js] website and download either the current or lts version
 
 ### Linux
@@ -72,7 +72,6 @@ You need to install two different version of java in order to play all the versi
 ### Linux
 
 - Download openjdk 8 and 17 from your repository using your package manager
-
 
 # Downloading the code
 
@@ -178,7 +177,7 @@ The `/who` command will list all active platers on the server with the correspon
 
 Any and all feedback is greatly appreciated, as this is my first real project that I've seen to completion. Thank you!
 
-[Discord Developer Page]: https://discord.com/developers/applications
-[Java 17]: https://adoptium.net/temurin/releases/?version=17
-[Java 8]: https://adoptium.net/temurin/releases/?version=8
+[discord developer page]: https://discord.com/developers/applications
+[java 17]: https://adoptium.net/temurin/releases/?version=17
+[java 8]: https://adoptium.net/temurin/releases/?version=8
 [node.js]: https://nodejs.org/
