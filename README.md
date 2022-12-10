@@ -142,7 +142,7 @@ The `NAME` variable represents what the /servers command will print. This name i
 5. On the left side of the screen, on the navbar, there will be a button named Bot. Click on the button
 6. Click on the add bot button that pops up
 7. Under the profile picture of the bot, there will be a section named Authorization Flow. <strong>MAKE SURE TO TURN OFF THE PUBLIC BOT OPTION.</strong>
-8. Further down the page, there will be a section named Privileged Gateway Intents, turn on all of the options and click the green Save Changes button that appears at the bottom of the screen
+8. Further down the page, there will be a section named Privileged Gateway Intents, turn on the  <strong>Message Content Intent</strong> option and click the green Save Changes button that appears at the bottom of the screen
 9. Back to the top of the page, click on the button that says reset token, this will grab the token that your discord bot uses to communicate with discord. <strong>DO NOT EVER SHARE THIS TOKEN WITH ANYONE, NO MATTER WHAT</strong>
 10. Click the copy token button below the token and paste it into the .env file in the `TOKEN` variable
 11. On the left navbar, there will be a dropdown labeled OAuth2. Click it and select the URL Generator option
