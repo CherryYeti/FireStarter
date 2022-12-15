@@ -104,7 +104,7 @@ When you paste these java paths into the java.ini file, <strong>MAKE SURE TO ADD
 
 - The paths for the java installations should be
 
-`/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/bin/java`
+`/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home/bin/java`
 
 `/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/bin/java`
 
@@ -112,7 +112,7 @@ When you paste these java paths into the java.ini file, <strong>MAKE SURE TO ADD
 
 `/usr/local/opt/openjdk@8/bin/java`
 
-`/usr/local/opt/openjdk@8/bin/java`
+`/usr/local/opt/openjdk@17/bin/java`
 
 ### Linux
 
