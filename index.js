@@ -10,7 +10,6 @@ const os = require("os");
 dotenv.config();
 //Grab java information from INI file
 const java_config = ini.parse(fs.readFileSync("./java.ini", "utf-8"));
-const java_config_keys = Reflect.ownKeys(java_config);
 
 //Grab server information from INI file
 const server_config = ini.parse(fs.readFileSync("./servers.ini", "utf-8"));

@@ -102,11 +102,17 @@ When you paste these java paths into the java.ini file, <strong>MAKE SURE TO ADD
 
 ### MacOS (Untested paths)
 
-- I believe that the path to the java installations should be
+- The paths for the java installations should be
+
+`/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/bin/java`
+
+`/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/bin/java`
+
+- If you are using brew to install openjdk, the locations will be
 
 `/usr/local/opt/openjdk@8/bin/java`
 
-`/usr/local/opt/openjdk@17/bin/java`
+`/usr/local/opt/openjdk@8/bin/java`
 
 ### Linux
 
