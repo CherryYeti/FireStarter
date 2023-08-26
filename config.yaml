@@ -4,7 +4,7 @@ java:
 servers:
   "server_1":
     "path": "/path/to/server/1.jar"
-    "java_version": 17
+    "java_version": 8
     "minimum_ram": 2048
     "maximum_ram": 4096
   "server_2":
