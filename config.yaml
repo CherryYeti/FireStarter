@@ -1,0 +1,16 @@
+java:
+  8: "path/to/java/8/executable"
+  17: "path/to/java/17/executable"
+servers:
+  "server_1":
+    "path": "/path/to/server/1.jar"
+    "java_version": 17
+    "minimum_ram": 2048
+    "maximum_ram": 4096
+  "server_2":
+    "path": "/path/to/server/2.jar"
+    "java_version": 17
+    "minimum_ram": 2048
+    "maximum_ram": 4096
+discord:
+  token: "token"
