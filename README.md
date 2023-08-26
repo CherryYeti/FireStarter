@@ -58,7 +58,7 @@ I would highly recommend using [brew](https://brew.sh/) to install openjdk
 Java 8: `/usr/local/opt/openjdk@8/bin/java`
 <br>
 
-Java 17: `/usr/local/opt/openjdk@8/bin/java`
+Java 17: `/usr/local/opt/openjdk@17/bin/java`
 
 # Creating the bot
 
