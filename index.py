@@ -3,10 +3,14 @@ from nextcord.ext import commands
 import yaml
 import asyncio
 import subprocess
+import logging
 
 with open("config.yaml", "r") as yaml_file:
     config_yaml_contents = yaml.safe_load(yaml_file)
 
+if config_yaml_contents.get("logging", {}).get("enabled"):
+    log_file = config_yaml_contents["logging"]["log_file"]
+    logging.basicConfig(filename=log_file, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 server_running = [False] * len(config_yaml_contents["java"])
 server_processes = [None] * len(config_yaml_contents["java"])
 num_servers = len(config_yaml_contents["servers"])
@@ -50,14 +54,21 @@ bot = commands.Bot()
 
 @bot.slash_command(description="List Servers")
 async def servers(interaction: nextcord.Interaction):
+    if config_yaml_contents.get("logging", {}).get("enabled"):
+        logging.info(f"Slash command 'servers' executed by user: {interaction.user.name}, id: {interaction.user.id}, nick: {interaction.user.nick}")
     await interaction.send(embed=generate_servers_embed())
 
 @bot.slash_command(description="Help me!")
 async def help(interaction: nextcord.Interaction):
+    if config_yaml_contents.get("logging", {}).get("enabled"):
+        logging.info(f"Slash command 'help' executed by user: {interaction.user.name}, id: {interaction.user.id}, nick: {interaction.user.nick}")
     await interaction.send(embed=generate_help_embed())
 
 @bot.slash_command(description="Start server")
 async def start(interaction: nextcord.Interaction, server: int):
+    if config_yaml_contents.get("logging", {}).get("enabled"):
+        logging.info(f"Slash command 'start' executed by user: {interaction.user.name}, id: {interaction.user.id}, nick: {interaction.user.nick}")
+        logging.info(f"User started server {int}")
     if 0 <= server < num_servers:
         if server_running[server]:
             await interaction.send("That server is already running")
@@ -83,6 +94,9 @@ async def start(interaction: nextcord.Interaction, server: int):
 
 @bot.slash_command(description="Execute command on server")
 async def cmd(interaction: nextcord.Interaction, server: int, command: str):
+    if config_yaml_contents.get("logging", {}).get("enabled"):
+        logging.info(f"Slash command 'cmd' executed by user: {interaction.user.name}, id: {interaction.user.id}, nick: {interaction.user.nick}")
+        logging.info(f"User sent command '{command}' to server {server}")
     if 0 <= server < num_servers:
         if not server_running[server]:
             await interaction.send("That server is not running")
@@ -96,6 +110,9 @@ async def cmd(interaction: nextcord.Interaction, server: int, command: str):
 
 @bot.slash_command(description="Stop the server")
 async def stop(interaction: nextcord.Interaction, server: int):
+    if config_yaml_contents.get("logging", {}).get("enabled"):
+        logging.info(f"Slash command 'stop' executed by user: {interaction.user.name}, id: {interaction.user.id}, nick: {interaction.user.nick}")
+        logging.info(f"User stopped server {int}")
     if 0 <= server < num_servers:
         if not server_running[server]:
             await interaction.send("That server is not running")
@@ -110,6 +127,8 @@ async def stop(interaction: nextcord.Interaction, server: int):
 
 @bot.slash_command(description="List players on the server")
 async def who(interaction: nextcord.Interaction, server: int):
+    if config_yaml_contents.get("logging", {}).get("enabled"):
+        logging.info(f"Slash command 'list' executed by user: {interaction.user.name}, id: {interaction.user.id}, nick: {interaction.user.nick}")
     if 0 <= server < num_servers:
         if not server_running[server]:
             await interaction.send("That server is not running")

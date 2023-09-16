@@ -14,3 +14,6 @@ servers:
     "maximum_ram": 4096
 discord:
   token: "token"
+logging:
+  enabled: false
+  log_file: "./bot.log"
