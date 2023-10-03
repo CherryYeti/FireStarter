@@ -6,14 +6,14 @@ import subprocess
 import logging
 
 with open("config.yaml", "r") as yaml_file:
-    config_yaml_contents = yaml.safe_load(yaml_file)
+    config = yaml.safe_load(yaml_file)
 
-if config_yaml_contents.get("logging", {}).get("enabled"):
-    log_file = config_yaml_contents["logging"]["log_file"]
+if config.get("logging", {}).get("enabled"):
+    log_file = config["logging"]["log_file"]
     logging.basicConfig(filename=log_file, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-server_running = [False] * len(config_yaml_contents["java"])
-server_processes = [None] * len(config_yaml_contents["java"])
-num_servers = len(config_yaml_contents["servers"])
+is_server_running = [False] * len(config["java"])
+server_processes = [None] * len(config["java"])
+num_servers = len(config["servers"])
 
 def generate_embed(title, fields):
     embed = nextcord.Embed(title=title, color=nextcord.Colour.purple())
@@ -22,7 +22,7 @@ def generate_embed(title, fields):
     return embed
 
 def generate_servers_embed():
-    fields = [(f'{server_name}', f'Online: {running}', False) for server_name, running in zip(config_yaml_contents["servers"].keys(), server_running)]
+    fields = [(f'{server_name}', f'Online: {running}', False) for server_name, running in zip(config["servers"].keys(), is_server_running)]
     servers_embed = generate_embed("Servers", fields)
     servers_embed.set_footer(text="Made by CherryYeti", icon_url="https://avatars.githubusercontent.com/u/53279269?v=4")
     return servers_embed
@@ -43,46 +43,46 @@ def generate_help_embed():
 async def process_server_output(data, interaction, selected, server_name):
     if "For help, type " in data:
         await interaction.send("Server is now up!")
-        server_running[selected] = True
+        is_server_running[selected] = True
     elif any(keyword in data for keyword in ["players online:", "joined the game", "left the game", "<"]):
         await interaction.send(data[data.index(":", 30) + 2:] + "\n")
     elif "EULA" in data:
         await interaction.send(f"You must accept the EULA for \"{server_name}\" before you can start it")
-        server_running[selected] = False
+        is_server_running[selected] = False
 
 bot = commands.Bot()
 
 @bot.slash_command(description="List Servers")
 async def servers(interaction: nextcord.Interaction):
-    if config_yaml_contents.get("logging", {}).get("enabled"):
+    if config.get("logging", {}).get("enabled"):
         logging.info(f"Slash command 'servers' executed by user: {interaction.user.name}, id: {interaction.user.id}, nick: {interaction.user.nick}")
     await interaction.send(embed=generate_servers_embed())
 
 @bot.slash_command(description="Help me!")
 async def help(interaction: nextcord.Interaction):
-    if config_yaml_contents.get("logging", {}).get("enabled"):
+    if config.get("logging", {}).get("enabled"):
         logging.info(f"Slash command 'help' executed by user: {interaction.user.name}, id: {interaction.user.id}, nick: {interaction.user.nick}")
     await interaction.send(embed=generate_help_embed())
 
 @bot.slash_command(description="Start server")
 async def start(interaction: nextcord.Interaction, server: int):
-    if config_yaml_contents.get("logging", {}).get("enabled"):
+    if config.get("logging", {}).get("enabled"):
         logging.info(f"Slash command 'start' executed by user: {interaction.user.name}, id: {interaction.user.id}, nick: {interaction.user.nick}")
         logging.info(f"User started server {int}")
     if 0 <= server < num_servers:
-        if server_running[server]:
+        if is_server_running[server]:
             await interaction.send("That server is already running")
         else:
-            selected_server = list(config_yaml_contents["servers"].keys())[server]
-            server_info = config_yaml_contents["servers"][selected_server]
+            selected_server = list(config["servers"].keys())[server]
+            server_info = config["servers"][selected_server]
             path, java_version, minimum_ram, maximum_ram = server_info["path"], server_info["java_version"], server_info["minimum_ram"], server_info["maximum_ram"]
             folder = '/'.join(path.split('/')[:-1]) if '/' in path else '\\'.join(path.split('\\')[:-1])
-            java_version_name = config_yaml_contents["java"][java_version]
+            java_version_name = config["java"][java_version]
             command = f'cd {folder} && {java_version_name} -Xms{minimum_ram}M -Xmx{maximum_ram}M -jar {path} nogui'
             await interaction.send(f'Starting server: {selected_server}...')
             process = await asyncio.create_subprocess_shell(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
             server_processes[server] = process
-            server_running[server] = True
+            is_server_running[server] = True
             while True:
                 stdout_line = await process.stdout.readline()
                 if not stdout_line:
@@ -94,11 +94,11 @@ async def start(interaction: nextcord.Interaction, server: int):
 
 @bot.slash_command(description="Execute command on server")
 async def cmd(interaction: nextcord.Interaction, server: int, command: str):
-    if config_yaml_contents.get("logging", {}).get("enabled"):
+    if config.get("logging", {}).get("enabled"):
         logging.info(f"Slash command 'cmd' executed by user: {interaction.user.name}, id: {interaction.user.id}, nick: {interaction.user.nick}")
         logging.info(f"User sent command '{command}' to server {server}")
     if 0 <= server < num_servers:
-        if not server_running[server]:
+        if not is_server_running[server]:
             await interaction.send("That server is not running")
         else:
             process = server_processes[server]
@@ -110,14 +110,14 @@ async def cmd(interaction: nextcord.Interaction, server: int, command: str):
 
 @bot.slash_command(description="Stop the server")
 async def stop(interaction: nextcord.Interaction, server: int):
-    if config_yaml_contents.get("logging", {}).get("enabled"):
+    if config.get("logging", {}).get("enabled"):
         logging.info(f"Slash command 'stop' executed by user: {interaction.user.name}, id: {interaction.user.id}, nick: {interaction.user.nick}")
         logging.info(f"User stopped server {int}")
     if 0 <= server < num_servers:
-        if not server_running[server]:
+        if not is_server_running[server]:
             await interaction.send("That server is not running")
         else:
-            server_running[server] = False
+            is_server_running[server] = False
             process = server_processes[server]
             command ="stop\n"
             process.stdin.write(command.encode())
@@ -127,13 +127,13 @@ async def stop(interaction: nextcord.Interaction, server: int):
 
 @bot.slash_command(description="List players on the server")
 async def who(interaction: nextcord.Interaction, server: int):
-    if config_yaml_contents.get("logging", {}).get("enabled"):
+    if config.get("logging", {}).get("enabled"):
         logging.info(f"Slash command 'list' executed by user: {interaction.user.name}, id: {interaction.user.id}, nick: {interaction.user.nick}")
     if 0 <= server < num_servers:
-        if not server_running[server]:
+        if not is_server_running[server]:
             await interaction.send("That server is not running")
         else:
-            server_running[server] = False
+            is_server_running[server] = False
             process = server_processes[server]
             command ="list\n"
             process.stdin.write(command.encode())
@@ -143,5 +143,5 @@ async def who(interaction: nextcord.Interaction, server: int):
 @bot.event
 async def on_ready():
     print(f"Bot is ready and connected as {bot.user.name} ({bot.user.id})")
-bot_token = config_yaml_contents["discord"]["token"]
+bot_token = config["discord"]["token"]
 bot.run(bot_token)
