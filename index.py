@@ -37,7 +37,7 @@ def generate_help_embed():
         ("/who [server]", "Lists who is on the corresponding server", False)
     ]
     help_embed = generate_embed("Help me!", fields)
-    help_embed.set_footer(text="Made by CherryYeti", icon_url="https://i.ibb.co/fS29xcV/fire.png")
+    help_embed.set_footer(text="Made by CherryYeti", icon_url="https://avatars.githubusercontent.com/u/53279269?v=4")
     return help_embed
 
 async def process_server_output(data, interaction, selected, server_name):
