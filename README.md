@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://javandel.net/jason">My Portfolio</a>
   ·
-  <a href="https://github.com/cherryyeti/FireStarter-Python/issues">Submit an Issue</a>
+  <a href="https://github.com/cherryyeti/FireStarter/issues">Submit an Issue</a>
   <br>
   <br>
 </p>
